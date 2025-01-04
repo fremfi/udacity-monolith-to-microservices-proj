@@ -9,14 +9,14 @@ before_script: []
 
 script:
   - docker --version
-  - docker build -f udagram-api-feed/Dockerfile -t  fremfi/udagram-feed-api:latest udagram-feed-api
-  - docker build -f udagram-api-users/Dockerfile -t  fremfi/udagram-user-api:latest udagram-user-api
+  - docker build -f udagram-api-feed/Dockerfile -t  fremfi/udagram-api-feed:latest udagram-api-feed
+  - docker build -f udagram-api-user/Dockerfile -t  fremfi/udagram-api-user:latest udagram-api-user
   - docker build -f udagram-frontend/Dockerfile -t  fremfi/udagram-frontend:latest udagram-frontend
   - docker build -f udagram-reverse-proxy/Dockerfile -t  fremfi/udagram-reverse-proxy:latest udagram-reverse-proxy
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push fremfi/udagram-feed-api:latest
-  - docker push fremfi/udagram-user-api:latest
+  - docker push fremfi/udagram-api-feed:latest
+  - docker push fremfi/udagram-api-user:latest
   - docker push fremfi/udagram-frontend:latest
-  - docker push fremfi/udagram-reverse-proxy:latestagram-reverse-proxy/Dockerfile -t  fremfi/udagram-reverse-proxy:latest udagram-reverse-proxy
+  - docker push fremfi/udagram-reverse-proxy:latest
