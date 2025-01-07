@@ -17,6 +17,7 @@ spec:
       containers:
         - name: backend-user
           image: fremfi/udagram-api-user
+          imagePullPolicy: Always
           env:
             - name: AWS_BUCKET
               valueFrom:

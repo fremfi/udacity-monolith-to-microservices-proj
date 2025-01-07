@@ -17,6 +17,7 @@ spec:
       containers:
         - name: backend-feed
           image: fremfi/udagram-api-feed
+          imagePullPolicy: Always
           env:
             - name: AWS_BUCKET
               valueFrom:

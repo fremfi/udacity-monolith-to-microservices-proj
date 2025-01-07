@@ -17,5 +17,6 @@ spec:
       containers:
         - name: frontend
           image: fremfi/udagram-frontend
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
