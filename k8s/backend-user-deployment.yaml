@@ -19,6 +19,11 @@ spec:
           image: fremfi/udagram-api-user
           imagePullPolicy: Always
           env:
+            - name: URL
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: URL
             - name: AWS_BUCKET
               valueFrom:
                 configMapKeyRef:
