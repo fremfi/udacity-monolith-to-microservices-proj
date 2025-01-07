@@ -18,11 +18,6 @@ spec:
         - name: backend-user
           image: fremfi/udagram-api-user
           env:
-            - name: URL
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: URL
             - name: AWS_BUCKET
               valueFrom:
                 configMapKeyRef:
