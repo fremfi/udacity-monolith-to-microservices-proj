@@ -14,10 +14,18 @@ spec:
       labels:
         app: backend-feed
     spec:
+      restartPolicy: Always # Moved restartPolicy to the pod level
       containers:
         - name: backend-feed
           image: fremfi/udagram-api-feed
           imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
           env:
             - name: URL
               valueFrom:
@@ -29,11 +37,6 @@ spec:
                 configMapKeyRef:
                   name: env-config
                   key: AWS_BUCKET
-            - name: AWS_PROFILE
-              valueFrom:
-                configMapKeyRef:
-                  name: env-config
-                  key: AWS_PROFILE
             - name: AWS_REGION
               valueFrom:
                 configMapKeyRef:
@@ -64,3 +67,11 @@ spec:
                 secretKeyRef:
                   name: env-secret
                   key: POSTGRES_USERNAME
+          volumeMounts:
+            - name: aws-secret
+              mountPath: "/root/.aws/"
+              readOnly: true
+      volumes:
+        - name: aws-secret
+          secret:
+            secretName: aws-secret
