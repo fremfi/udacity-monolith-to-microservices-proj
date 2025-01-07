@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: arn:aws:s3:::udagram-375813674175
+  AWS_PROFILE: beanstalk-training
+  AWS_REGION: us-east-1
+  JWT_SECRET: testing
+  POSTGRES_DB: postgres
+  POSTGRES_HOST: postgres.c59vnbghulqj.us-east-1.rds.amazonaws.com
+metadata:
+  name: env-config
